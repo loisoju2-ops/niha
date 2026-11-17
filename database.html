@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Registration Database - Nigerian Family Health Protection Program">
+  <title>Registration Database - NFHPP</title>
+  <style>
+    :root{--navy:#03142f;--navy2:#061f45;--blue:#0789ed;--cyan:#08b9ef;--ink:#10213b;--muted:#52627a;--white:#fff;--pale:#f3f7fc;--line:#dce7f2;--green:#16895b;--red:#c93b3b}
+    *{box-sizing:border-box} html{scroll-behavior:smooth;scroll-padding-top:145px}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:#fff;line-height:1.6}
+    a{color:inherit} 
+    
+    /* Header & Navigation */
+    .topbar{background:var(--navy);color:#fff;padding:18px clamp(18px,4vw,56px);display:grid;grid-template-columns:1fr minmax(260px,2fr) 1fr;gap:22px;align-items:center}
+    .brand{display:flex;align-items:center;gap:12px;min-width:0}.crest{width:48px;height:55px;flex:none;border:2px solid #fff;border-radius:45% 45% 48% 48%;display:grid;place-items:center;color:#fff;font-size:27px;font-weight:bold;clip-path:polygon(50% 0,100% 15%,91% 72%,50% 100%,9% 72%,0 15%)}
+    .brand small{display:block;color:#a9c8eb;font-size:11px;letter-spacing:1.2px;text-transform:uppercase}.brand strong{font-size:14px;line-height:1.25;display:block}
+    .identity{text-align:center}.identity h1{font-size:clamp(18px,2vw,25px);line-height:1.2;margin:0 0 5px;color:#fff}.identity p{margin:0;color:#d8e6f7;font-size:13px;letter-spacing:.6px}
+    .header-tools{display:flex;justify-content:flex-end;align-items:center;gap:12px;flex-wrap:wrap}.header-tools label{font-size:12px;color:#dce8f7}.header-tools select{background:#06234d;color:#fff;border:1px solid var(--blue);padding:10px 12px;border-radius:5px;font-size:14px}.phone{background:var(--blue);color:white;text-decoration:none;font-weight:bold;padding:10px 15px;border-radius:8px;white-space:nowrap}
+    .nav{position:sticky;top:0;z-index:20;background:#fff;box-shadow:0 4px 16px #071c3614;display:flex;justify-content:center;overflow-x:auto;border-bottom:1px solid var(--line)}
+    .nav a{min-width:145px;max-width:220px;flex:1;text-align:center;text-decoration:none;color:var(--ink);font-weight:700;font-size:13px;line-height:1.25;padding:17px 13px;border-right:1px solid #d9e7f5;display:flex;align-items:center;justify-content:center;transition:.2s}
+    .nav a:hover,.nav a.active{color:#005eb8;background:#f0f8ff;box-shadow:inset 0 -3px var(--blue)}
+
+    /* Database Page Styles */
+    .page-section { padding: clamp(40px, 5vw, 70px) clamp(20px, 5vw, 70px); background: var(--pale); min-height: 70vh; }
+    .db-container { max-width: 1400px; margin: 0 auto; }
+    
+    .db-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px; }
+    .db-header h2 { color: var(--navy); margin: 0; font-size: 28px; }
+    
+    .btn-group { display: flex; gap: 10px; flex-wrap: wrap; }
+    .btn { padding: 12px 20px; font-size: 14px; font-weight: bold; border-radius: 6px; cursor: pointer; border: none; display: inline-flex; align-items: center; gap: 8px; transition: background 0.2s; }
+    .btn-download { background: var(--green); color: #fff; }
+    .btn-download:hover { background: #116c47; }
+    .btn-clear { background: var(--red); color: #fff; }
+    .btn-clear:hover { background: #a62d2d; }
+    .btn-back { background: var(--blue); color: #fff; text-decoration: none; }
+    .btn-back:hover { background: #0570c4; }
+
+    .table-container { background: #fff; border-radius: 12px; box-shadow: 0 8px 24px #0b2b4d08; border: 1px solid var(--line); overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; text-align: left; min-width: 1200px; }
+    th, td { padding: 14px 16px; border-bottom: 1px solid var(--line); font-size: 14px; }
+    th { background: var(--navy2); color: #fff; font-weight: bold; white-space: nowrap; }
+    tr:hover { background: #f8fbff; }
+    .empty-state { padding: 40px; text-align: center; color: var(--muted); font-size: 16px; }
+
+    /* Footer */
+    footer{background:var(--navy);color:#fff;padding:48px clamp(20px,5vw,70px) 20px;position:relative; margin-top: 0;}
+    footer:before{content:"";position:absolute;left:0;right:0;top:-15px;height:25px;background:var(--blue);border-radius:50% 50% 0 0 / 55% 55% 0 0}
+    .footer-main{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:35px;padding-bottom:30px}.footer-brand{display:flex;gap:14px;align-items:center}.footer-brand p{margin:0;color:#d8e6f7}.footer-col h3{font-size:15px;margin:0 0 13px}.footer-col a{display:block;color:#c5d8ee;text-decoration:none;font-size:13px;margin:7px 0}.footer-col a:hover{color:#fff}.socials{display:flex;gap:10px;margin-top:14px}.socials a{width:34px;height:34px;border-radius:50%;background:#fff;color:var(--navy);display:grid;place-items:center;font-weight:bold}
+    .copyright{border-top:1px solid #49607d;text-align:center;padding-top:18px;color:#b9c9dc;font-size:12px}
+
+    @media(max-width:900px){.topbar{grid-template-columns:1fr 2fr}.header-tools{grid-column:1/-1;justify-content:center}}
+    @media(max-width:620px){.topbar{grid-template-columns:1fr;text-align:center}.brand{justify-content:center}.identity{grid-row:1}.brand{grid-row:2}.header-tools{grid-row:3}.nav{justify-content:flex-start}.nav a{min-width:155px;padding:14px 10px}.footer-main{grid-template-columns:1fr;gap:24px}}
+  </style>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><div class="crest" aria-hidden="true">✚</div><div><small>Health protection</small><strong>Nigerian Family<br>Health Protection Program</strong></div></div>
+  <div class="identity"><h1 data-i18n="program">Nigerian Family Health Protection Program</h1><p data-i18n="tagline">YOUR FAMILY. THEIR HEALTH. YOUR RESPONSIBILITY.</p></div>
+  <div class="header-tools">
+    <label for="language" data-i18n="translate">Translate</label>
+    <select id="language" aria-label="Choose language"><option value="en">English</option><option value="yo">Yorùbá</option><option value="efi">Efik</option></select>
+    <a class="phone" href="registration.html">Register here</a>
+  </div>
+</header>
+
+<nav class="nav" aria-label="Main services navigation">
+  <a href="index.html#insurance" data-i18n="nav1">Nigerian Family Health Insurance Services</a>
+  <a href="index.html#senior" data-i18n="nav2">Senior Citizens Home Healthcare</a>
+  <a href="index.html#telemedicine" data-i18n="nav3">Telemedicine</a>
+  <a href="index.html#supplies" data-i18n="nav4">Durable Medical Supplies</a>
+  <a href="index.html#training" data-i18n="nav5">Medical Training, Education & Careers</a>
+  <a href="index.html#partners" data-i18n="nav6">Partners</a>
+</nav>
+
+<main>
+  <section class="page-section">
+    <div class="db-container">
+      
+      <div class="db-header">
+        <h2>Registration Database</h2>
+        <div class="btn-group">
+          <a href="registration.html" class="btn btn-back">← Back to Form</a>
+          <button id="clearBtn" class="btn btn-clear">🗑 Clear Database</button>
+          <button id="downloadBtn" class="btn btn-download">⬇ Download as Excel (CSV)</button>
+        </div>
+      </div>
+
+      <div class="table-container">
+        <table id="databaseTable">
+          <thead>
+            <tr>
+              <th>Date/Time</th>
+              <th>Surname</th>
+              <th>First Name</th>
+              <th>Middle Name</th>
+              <th>Gender</th>
+              <th>Marital Status</th>
+              <th>Date of Birth</th>
+              <th>Blood Group</th>
+              <th>NIN Number</th>
+              <th>Phone Number</th>
+              <th>Email</th>
+              <th>Address</th>
+              <th>State of Residence</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+            <!-- Data will be populated here by JavaScript -->
+          </tbody>
+        </table>
+        <div id="emptyState" class="empty-state" style="display: none;">
+          No registrations found in the database. Please submit the form first.
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-main">
+    <div><div class="footer-brand"><div class="crest" aria-hidden="true">✚</div><p><strong data-i18n="program">Nigerian Family Health Protection Program</strong><br><span data-i18n="tagline">YOUR FAMILY. THEIR HEALTH. YOUR RESPONSIBILITY.</span></p></div><div class="socials"><a href="#" aria-label="Facebook">f</a><a href="#" aria-label="YouTube">▶</a><a href="index.html#home" aria-label="Website">◎</a></div></div>
+    <div class="footer-col"><h3 data-i18n="quickLinks">Quick Links</h3><a href="index.html#insurance" data-i18n="nav1">Nigerian Family Health Insurance Services</a><a href="index.html#senior" data-i18n="nav2">Senior Citizens Home Healthcare</a><a href="index.html#telemedicine" data-i18n="nav3">Telemedicine</a><a href="index.html#partners" data-i18n="nav6">Partners</a></div>
+    <div class="footer-col"><h3 data-i18n="contactHeading">Contact</h3><a href="tel:3135510998">313 551 0998</a><a href="index.html#about" data-i18n="aboutProgram">About the programme</a><a href="index.html" data-i18n="backTop">Back to home ↑</a></div>
+  </div>
+  <div class="copyright" data-i18n="copyright">© 2026 Nigerian Family Health Protection Program. All Rights Reserved.</div>
+</footer>
+
+<script>
+// ==========================================
+// DATABASE DISPLAY & MANAGEMENT LOGIC
+// ==========================================
+const STORAGE_KEY = 'gifship_registration_db';
+const tableBody = document.getElementById('tableBody');
+const emptyState = document.getElementById('emptyState');
+const databaseTable = document.getElementById('databaseTable');
+
+// Sample Data to inject if the database is empty
+const sampleSubmissions = [
+    {
+        timestamp: new Date().toLocaleString(),
+        surname: "Okafor",
+        firstName: "Chinedu",
+        middleName: "Emeka",
+        gender: "Male",
+        maritalStatus: "Married",
+        dob: "1985-05-15",
+        bloodGroup: "O+",
+        nin: "12345678901",
+        phone: "08031234567",
+        email: "chinedu.okafor@example.com",
+        address: "12 Aba Road, Port Harcourt",
+        state: "Rivers"
+    },
+    {
+        timestamp: new Date(Date.now() - 86400000).toLocaleString(), // 1 day ago
+        surname: "Adeyemi",
+        firstName: "Folake",
+        middleName: "Adebisi",
+        gender: "Female",
+        maritalStatus: "Single",
+        dob: "1992-11-20",
+        bloodGroup: "A-",
+        nin: "98765432109",
+        phone: "07059876543",
+        email: "folake.a@example.com",
+        address: "45 Allen Avenue, Ikeja",
+        state: "Lagos"
+    },
+    {
+        timestamp: new Date(Date.now() - 172800000).toLocaleString(), // 2 days ago
+        surname: "Usman",
+        firstName: "Ibrahim",
+        middleName: "Musa",
+        gender: "Male",
+        maritalStatus: "Widowed",
+        dob: "1960-01-01",
+        bloodGroup: "B+",
+        nin: "45678912304",
+        phone: "09061234567",
+        email: "ibrahim.usman@example.com",
+        address: "78 Ahmadu Bello Way, Kaduna",
+        state: "Kaduna"
+    }
+];
+
+// 1. Function to render the database into the HTML table
+function renderDatabase() {
+    let database = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    
+    // Seed sample data if database is completely empty
+    if (!database) {
+        database = sampleSubmissions;
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(database));
+    }
+    
+    tableBody.innerHTML = ''; // Clear existing rows
+    
+    if (database.length === 0) {
+        emptyState.style.display = 'block';
+        databaseTable.style.display = 'none';
+        return;
+    }
+    
+    emptyState.style.display = 'none';
+    databaseTable.style.display = 'table';
+
+    // Loop through the database and create table rows
+    database.forEach(row => {
+        const tr = document.createElement('tr');
+        
+        // Array of the keys we want to display, in order
+        const keys = ['timestamp', 'surname', 'firstName', 'middleName', 'gender', 'maritalStatus', 'dob', 'bloodGroup', 'nin', 'phone', 'email', 'address', 'state'];
+        
+        keys.forEach(key => {
+            const td = document.createElement('td');
+            td.textContent = row[key] || '-';
+            tr.appendChild(td);
+        });
+        
+        tableBody.appendChild(tr);
+    });
+}
+
+// 2. Download to CSV / Excel
+document.getElementById('downloadBtn').addEventListener('click', function() {
+  let database = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+  
+  if (database.length === 0) {
+    alert('No registration data found to download.');
+    return;
+  }
+
+  const headers = ['Date/Time', 'Surname', 'First Name', 'Middle Name', 'Gender', 'Marital Status', 'Date of Birth', 'Blood Group', 'NIN Number', 'Phone Number', 'Email', 'Address', 'State of Residence'];
+  const keys = ['timestamp', 'surname', 'firstName', 'middleName', 'gender', 'maritalStatus', 'dob', 'bloodGroup', 'nin', 'phone', 'email', 'address', 'state'];
+
+  let csvContent = headers.join(',') + '\n';
+
+  database.forEach(row => {
+    let rowData = keys.map(key => {
+      let cell = row[key] ? row[key].toString() : '';
+      cell = cell.replace(/"/g, '""'); // Escape quotes
+      if (cell.includes(',') || cell.includes('\n') || cell.includes('"')) {
+        cell = `"${cell}"`; // Wrap in quotes if it contains commas or newlines
+      }
+      return cell;
+    });
+    csvContent += rowData.join(',') + '\n';
+  });
+
+  const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.setAttribute("href", url);
+  link.setAttribute("download", "GIFSHIP_Registrations.csv");
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+});
+
+// 3. Clear Database
+document.getElementById('clearBtn').addEventListener('click', function() {
+    if (confirm("Are you sure you want to delete ALL registration records? This action cannot be undone.")) {
+        localStorage.removeItem(STORAGE_KEY);
+        renderDatabase(); // Refresh the table (which will show the empty state)
+    }
+});
+
+// Initialize the page by loading the data
+window.onload = renderDatabase;
+
+
+// ==========================================
+// LANGUAGE TRANSLATION LOGIC
+// ==========================================
+const translations = {
+ en: {
+  program:"Nigerian Family Health Protection Program", tagline:"YOUR FAMILY. THEIR HEALTH. YOUR RESPONSIBILITY.", translate:"Translate",
+  nav1:"Nigerian Family Health Insurance Services",nav2:"Senior Citizens Home Healthcare",nav3:"Telemedicine",nav4:"Durable Medical Supplies",nav5:"Medical Training, Education & Careers",nav6:"Partners",
+  quickLinks:"Quick Links",contactHeading:"Contact",aboutProgram:"About the programme",backTop:"Back to top ↑",copyright:"© 2026 Nigerian Family Health Protection Program. All Rights Reserved."
+ },
+ yo: {
+  program:"Ètò Ààbò Ìlera Ẹbí Nàìjíríà",tagline:"ẸBÍ RẸ. ÌLERA WỌN. OJÚṢÙN RẸ.",translate:"Èdè",nav1:"Àwọn Iṣẹ́ Ìdánilójú Ìlera Ẹbí Nàìjíríà",nav2:"Ìtọ́jú Ìlera Àwọn Àgbàlagbà Nílé",nav3:"Ìtọ́jú Ìlera Lórí Íńtánẹ́ẹ̀tì",nav4:"Àwọn Ohun Èlò Ìṣègùn",nav5:"Ìkẹ́kọ̀ọ́ àti Iṣẹ́ Ìlera",nav6:"Àwọn Alábáṣiṣẹpọ̀",
+  quickLinks:"Àwọn Ọ̀nà Kíákíá",contactHeading:"Ìbánisọ̀rọ̀",aboutProgram:"Nípa ètò náà",backTop:"Padà sí òkè ↑",copyright:"© 2026 Ètò Ààbò Ìlera Ẹbí Nàìjíríà. Gbogbo ẹ̀tọ́ wà ní ìpamọ́."
+ },
+ efi: {
+  program:"Nigerian Family Health Protection Program",tagline:"EBIBI FO. MBUBU FO. UTIBE FO.",translate:"Sụn̄ Ikọ",nav1:"Nigerian Family Health Insurance Services",nav2:"Senior Citizens Home Healthcare",nav3:"Telemedicine",nav4:"Durable Medical Supplies",nav5:"Medical Training, Education & Careers",nav6:"Partners",
+  quickLinks:"Quick Links",contactHeading:"Contact",aboutProgram:"About program",backTop:"Kpa ke enyọn̄ ↑",copyright:"© 2026 Nigerian Family Health Protection Program. All Rights Reserved."
+ }
+};
+function setLanguage(lang){
+ const dict=translations[lang]||translations.en;
+ document.documentElement.lang=lang==="yo"?"yo":lang==="efi"?"efi":"en";
+ document.querySelectorAll("[data-i18n]").forEach(el=>{
+   const key=el.dataset.i18n;
+   if(dict[key]) el.textContent=dict[key];
+ });
+ localStorage.setItem("nfhpp-language",lang);
+}
+const languageSelect=document.getElementById("language");
+languageSelect.value=localStorage.getItem("nfhpp-language")||"en";
+setLanguage(languageSelect.value);
+languageSelect.addEventListener("change",e=>setLanguage(e.target.value));
+</script>
+</body>
+</html>

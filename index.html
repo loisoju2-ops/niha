@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Nigerian Family Health Protection Program — supporting access to family health insurance and healthcare services.">
+  <title>Nigerian Family Health Protection Program</title>
+  <style>
+    :root{--navy:#03142f;--navy2:#061f45;--blue:#0789ed;--cyan:#08b9ef;--ink:#10213b;--muted:#52627a;--white:#fff;--pale:#f3f7fc;--line:#dce7f2}
+    *{box-sizing:border-box} html{scroll-behavior:smooth;scroll-padding-top:145px}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:#fff;line-height:1.6}
+    a{color:inherit} .topbar{background:var(--navy);color:#fff;padding:18px clamp(18px,4vw,56px);display:grid;grid-template-columns:1fr minmax(260px,2fr) 1fr;gap:22px;align-items:center}
+    .brand{display:flex;align-items:center;gap:12px;min-width:0}.crest{width:48px;height:55px;flex:none;border:2px solid #fff;border-radius:45% 45% 48% 48%;display:grid;place-items:center;color:#fff;font-size:27px;font-weight:bold;clip-path:polygon(50% 0,100% 15%,91% 72%,50% 100%,9% 72%,0 15%)}
+    .brand small{display:block;color:#a9c8eb;font-size:11px;letter-spacing:1.2px;text-transform:uppercase}.brand strong{font-size:14px;line-height:1.25;display:block}
+    .identity{text-align:center}.identity h1{font-size:clamp(18px,2vw,25px);line-height:1.2;margin:0 0 5px;color:#fff}.identity p{margin:0;color:#d8e6f7;font-size:13px;letter-spacing:.6px}
+    .header-tools{display:flex;justify-content:flex-end;align-items:center;gap:12px;flex-wrap:wrap}.header-tools label{font-size:12px;color:#dce8f7}.header-tools select{background:#06234d;color:#fff;border:1px solid var(--blue);padding:10px 12px;border-radius:5px;font-size:14px}.phone{background:var(--blue);color:white;text-decoration:none;font-weight:bold;padding:10px 15px;border-radius:8px;white-space:nowrap}
+    .nav{position:sticky;top:0;z-index:20;background:#fff;box-shadow:0 4px 16px #071c3614;display:flex;justify-content:center;overflow-x:auto;border-bottom:1px solid var(--line)}
+    .nav a{min-width:145px;max-width:220px;flex:1;text-align:center;text-decoration:none;color:var(--ink);font-weight:700;font-size:13px;line-height:1.25;padding:17px 13px;border-right:1px solid #d9e7f5;display:flex;align-items:center;justify-content:center;transition:.2s}
+    .nav a:hover,.nav a.active{color:#005eb8;background:#f0f8ff;box-shadow:inset 0 -3px var(--blue)}
+    .hero{background:linear-gradient(115deg,var(--navy),#062c61);color:#fff;display:grid;grid-template-columns:1fr 1.08fr;min-height:440px;overflow:hidden}
+    .hero-copy{padding:clamp(35px,6vw,76px);display:flex;flex-direction:column;justify-content:center}
+    .eyebrow{color:#8edcff;text-transform:uppercase;font-weight:bold;letter-spacing:2px;font-size:12px}
+    .hero h2{font-size:clamp(32px,4.2vw,56px);line-height:1.08;margin:12px 0 18px;color:var(--cyan)}
+    .hero-copy p{font-size:clamp(16px,1.6vw,21px);line-height:1.45;color:#f1f6ff;max-width:620px;margin:0 0 25px}
+    .actions{display:flex;gap:12px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;background:var(--blue);color:#fff;text-decoration:none;border:0;border-radius:8px;padding:13px 21px;font-weight:bold;cursor:pointer}.btn.outline{background:transparent;border:1px solid #9bcfff}
+    .hero-media{min-height:360px;position:relative;background:#061b38}.hero-media video,.section-video video{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}.media-fallback{position:absolute;inset:0;background:linear-gradient(0deg,#00142b66,#00142b00),url("assets/family-health-poster.jpg") center/cover;display:flex;align-items:flex-end;padding:22px;color:#fff;font-size:13px;font-weight:bold}
+    .video-tag{position:absolute;top:18px;left:18px;background:#03142fc9;color:#fff;padding:8px 12px;border-radius:5px;font-size:12px;z-index:2}
+    .trust-strip{display:flex;align-items:center;gap:16px;padding:18px clamp(20px,5vw,70px);background:#f4f8fd;border-bottom:1px solid var(--line);color:#17345b;font-weight:bold;font-size:13px}
+    .seal{width:45px;height:45px;border-radius:50%;border:2px solid #16895b;color:#16895b;display:grid;place-items:center;font-size:18px;flex:none}
+    section.content{padding:clamp(48px,7vw,86px) clamp(20px,5vw,70px)}
+    .section-heading{font-size:clamp(27px,3.4vw,42px);line-height:1.15;margin:0 0 28px;color:var(--navy)}.section-heading span{color:#0a69c5}
+    .info-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(25px,4vw,48px);align-items:center}
+    .section-video{position:relative;min-height:340px;aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:#dce8f3;box-shadow:0 14px 35px #061d381c}
+    .section-video .media-fallback{background-image:linear-gradient(0deg,#00142b55,#00142b00),url("assets/family-health-poster.jpg")}
+    .info-copy h3{font-size:22px;color:var(--navy);margin:0 0 14px}.info-copy p{color:#293c56;margin:0 0 16px}.text-link{color:#006bc9;font-weight:bold;text-underline-offset:4px}
+    .section-intro{max-width:760px;color:var(--muted);margin-top:-12px;margin-bottom:30px}
+    .services{background:var(--pale)}.service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .service-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:24px;box-shadow:0 8px 24px #0b2b4d08;scroll-margin-top:145px}
+    .service-icon{width:44px;height:44px;border-radius:10px;background:#e5f3ff;color:#006fc9;display:grid;place-items:center;font-size:22px;margin-bottom:14px}
+    .service-card h3{margin:0 0 9px;color:var(--navy);font-size:18px}.service-card p{margin:0;color:var(--muted);font-size:14px}
+    .service-card a{display:inline-block;margin-top:15px;color:#006bc9;font-size:13px;font-weight:bold;text-decoration:none}
+    .cta-band{margin:0 clamp(20px,5vw,70px) 70px;background:linear-gradient(110deg,#06204a,#0875d1);border-radius:15px;color:#fff;padding:30px clamp(22px,4vw,48px);display:flex;align-items:center;justify-content:space-between;gap:25px}
+    .cta-band h2{margin:0 0 5px;font-size:25px}.cta-band p{margin:0;color:#dbeeff}
+    footer{background:var(--navy);color:#fff;padding:48px clamp(20px,5vw,70px) 20px;position:relative}
+    footer:before{content:"";position:absolute;left:0;right:0;top:-15px;height:25px;background:var(--blue);border-radius:50% 50% 0 0 / 55% 55% 0 0}
+    .footer-main{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:35px;padding-bottom:30px}.footer-brand{display:flex;gap:14px;align-items:center}.footer-brand p{margin:0;color:#d8e6f7}.footer-col h3{font-size:15px;margin:0 0 13px}.footer-col a{display:block;color:#c5d8ee;text-decoration:none;font-size:13px;margin:7px 0}.footer-col a:hover{color:#fff}.socials{display:flex;gap:10px;margin-top:14px}.socials a{width:34px;height:34px;border-radius:50%;background:#fff;color:var(--navy);display:grid;place-items:center;font-weight:bold}
+    .copyright{border-top:1px solid #49607d;text-align:center;padding-top:18px;color:#b9c9dc;font-size:12px}
+    @media(max-width:900px){.topbar{grid-template-columns:1fr 2fr}.header-tools{grid-column:1/-1;justify-content:center}.hero{grid-template-columns:1fr}.hero-media{min-height:340px}.info-grid{grid-template-columns:1fr 1fr}.service-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:620px){.topbar{grid-template-columns:1fr;text-align:center}.brand{justify-content:center}.identity{grid-row:1}.brand{grid-row:2}.header-tools{grid-row:3}.nav{justify-content:flex-start}.nav a{min-width:155px;padding:14px 10px}.hero-copy{padding:38px 22px}.hero-media{min-height:280px}.trust-strip{font-size:11px}.info-grid{grid-template-columns:1fr}.section-video{min-height:250px}.service-grid{grid-template-columns:1fr}.cta-band{display:block}.cta-band .btn{margin-top:18px}.footer-main{grid-template-columns:1fr;gap:24px}}
+  </style>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><div class="crest" aria-hidden="true">✚</div><div><small>Health protection</small><strong>Nigerian Family<br>Health Protection Program</strong></div></div>
+  <div class="identity"><h1 data-i18n="program">Nigerian Family Health Protection Program</h1><p data-i18n="tagline">YOUR FAMILY. THEIR HEALTH. YOUR RESPONSIBILITY.</p></div>
+  <div class="header-tools">
+    <label for="language" data-i18n="translate">Translate</label>
+    <select id="language" aria-label="Choose language"><option value="en">English</option><option value="yo">Yorùbá</option><option value="efi">Efik</option></select>
+    <a href="reg.html">Register here</a>
+  </div>
+</header>
+
+<nav class="nav" aria-label="Main services navigation">
+  <a class="active" href="#insurance" data-i18n="nav1">Nigerian Family Health Insurance Services</a>
+  <a href="#senior" data-i18n="nav2">Senior Citizens Home Healthcare</a>
+  <a href="#telemedicine" data-i18n="nav3">Telemedicine</a>
+  <a href="#supplies" data-i18n="nav4">Durable Medical Supplies</a>
+  <a href="#training" data-i18n="nav5">Medical Training, Education & Careers</a>
+  <a href="#partners" data-i18n="nav6">Partners</a>
+</nav>
+
+<main>
+  <section class="hero" id="home">
+    <div class="hero-copy">
+      <span class="eyebrow" data-i18n="eyebrow">Protecting families across Nigeria</span>
+      <h2 data-i18n="heroTitle">Nigerian Family Health Insurance Services</h2>
+      <p data-i18n="heroText">Group, Individual &amp; Family Social Health Insurance Program – GIFSHIP.</p>
+      <div class="actions"><a class="btn" href="#insurance" data-i18n="explore">Explore Our Services</a><a class="btn outline" href="#about" data-i18n="learn">Learn More</a></div>
+    </div>
+    <div class="hero-media">
+      <span class="video-tag" data-i18n="heroVideoLabel">PROGRAMME INTRODUCTION</span>
+      <div class="media-fallback" data-fallback="hero"><span data-i18n="videoPlaceholder">Add your healthcare video to assets/hero-video.mp4</span></div>
+      <video id="heroVideo" autoplay muted loop playsinline controls poster="assets/family-health-poster.jpg">
+        <source src="assets/hero-video.mp4" type="video/mp4">
+      </video>
+    </div>
+  </section>
+
+  <div class="trust-strip"><div class="seal">✚</div><span data-i18n="trust">Supporting family health, dignity and access to care across Nigeria</span></div>
+
+  <section class="content" id="about">
+    <h2 class="section-heading"><span data-i18n="sectionTitleBlue">Nigerian Family</span> <span data-i18n="sectionTitleRest">Health Insurance Services</span></h2>
+    <div class="info-grid">
+      <div class="section-video">
+        <div class="media-fallback" data-fallback="second"><span data-i18n="videoPlaceholder2">Add your family health insurance video to assets/insurance-video.mp4</span></div>
+        <video id="infoVideo" muted loop playsinline controls poster="assets/family-health-poster.jpg">
+          <source src="assets/insurance-video.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="info-copy">
+        <h3 data-i18n="authorization">National Health Insurance Authorization</h3>
+        <p data-i18n="paragraph1">Nigerian families deserve access to quality and affordable healthcare. The Nigerian Family Health Protection Program provides an opportunity to support parents, children, siblings and extended family members through health insurance.</p>
+        <p data-i18n="paragraph2">Supporting health insurance for loved ones is more than providing money for medical bills. It is an investment in family protection, dignity, financial security and longer life.</p>
+        <p data-i18n="paragraph3">Our purpose is to promote access to affordable health insurance coverage and help protect families across Nigeria.</p>
+        <a class="text-link" href="#insurance" data-i18n="reasons">Reasons Nigerians Should Pay for Family Health Insurance</a>
+      </div>
+    </div>
+  </section>
+
+ 
+
+  <section class="cta-band" id="contact">
+    <div><h2 data-i18n="ctaTitle">Healthy families start with protection.</h2><p data-i18n="ctaText">Contact the programme to learn more about available services.</p></div>
+    <a class="btn" href="tel:3135510998" data-i18n="callUs">Call 313 551 0998</a>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-main">
+    <div><div class="footer-brand"><div class="crest" aria-hidden="true">✚</div><p><strong data-i18n="program">Nigerian Family Health Protection Program</strong><br><span data-i18n="tagline">YOUR FAMILY. THEIR HEALTH. YOUR RESPONSIBILITY.</span></p></div><div class="socials"><a href="#" aria-label="Facebook">f</a><a href="#" aria-label="YouTube">▶</a><a href="#home" aria-label="Website">◎</a></div></div>
+    <div class="footer-col"><h3 data-i18n="quickLinks">Quick Links</h3><a href="#insurance" data-i18n="nav1">Nigerian Family Health Insurance Services</a><a href="#senior" data-i18n="nav2">Senior Citizens Home Healthcare</a><a href="#telemedicine" data-i18n="nav3">Telemedicine</a><a href="#partners" data-i18n="nav6">Partners</a></div>
+    <div class="footer-col"><h3 data-i18n="contactHeading">Contact</h3><a href="tel:3135510998">313 551 0998</a><a href="#about" data-i18n="aboutProgram">About the programme</a><a href="#home" data-i18n="backTop">Back to top ↑</a></div>
+  </div>
+  <div class="copyright" data-i18n="copyright">© 2026 Nigerian Family Health Protection Program. All Rights Reserved.</div>
+</footer>
+
+<script>
+const translations = {
+ en: {
+  program:"Nigerian Family Health Protection Program", tagline:"YOUR FAMILY. THEIR HEALTH. YOUR RESPONSIBILITY.", translate:"Translate",
+  nav1:"Nigerian Family Health Insurance Services",nav2:"Senior Citizens Home Healthcare",nav3:"Telemedicine",nav4:"Durable Medical Supplies",nav5:"Medical Training, Education & Careers",nav6:"Partners",
+  eyebrow:"Protecting families across Nigeria",heroTitle:"Nigerian Family Health Insurance Services",heroText:"Group, Individual & Family Social Health Insurance Program – GIFSHIP.",explore:"Explore Our Services",learn:"Learn More",heroVideoLabel:"PROGRAMME INTRODUCTION",videoPlaceholder:"Add your healthcare video to assets/hero-video.mp4",videoPlaceholder2:"Add your family health insurance video to assets/insurance-video.mp4",
+  trust:"Supporting family health, dignity and access to care across Nigeria",sectionTitleBlue:"Nigerian Family",sectionTitleRest:"Health Insurance Services",authorization:"National Health Insurance Authorization",
+  paragraph1:"Nigerian families deserve access to quality and affordable healthcare. The Nigerian Family Health Protection Program provides an opportunity to support parents, children, siblings and extended family members through health insurance.",paragraph2:"Supporting health insurance for loved ones is more than providing money for medical bills. It is an investment in family protection, dignity, financial security and longer life.",paragraph3:"Our purpose is to promote access to affordable health insurance coverage and help protect families across Nigeria.",reasons:"Reasons Nigerians Should Pay for Family Health Insurance",
+  servicesTitle:"Our Healthcare Services",servicesIntro:"Explore the programme's service areas and learn how each one supports healthier families and communities.",card1Title:"Family Health Insurance",card1Text:"Information about individual, group and family social health insurance options.",card2Title:"Senior Citizens Home Healthcare",card2Text:"Healthcare support and assistance designed with older people and their families in mind.",card3Title:"Telemedicine",card3Text:"Learn about remote consultations and digital access to healthcare professionals.",card4Title:"Durable Medical Supplies",card4Text:"Information about essential medical equipment and durable healthcare supplies.",card5Title:"Medical Training, Education & Careers",card5Text:"Training, education and career-development information for the healthcare sector.",card6Title:"Partners",card6Text:"Connect with the programme about institutional collaboration and partnership opportunities.",readMore:"Learn more →",contactUs:"Contact us →",ctaTitle:"Healthy families start with protection.",ctaText:"Contact the programme to learn more about available services.",callUs:"Call 313 551 0998",quickLinks:"Quick Links",contactHeading:"Contact",aboutProgram:"About the programme",backTop:"Back to top ↑",copyright:"© 2026 Nigerian Family Health Protection Program. All Rights Reserved."
+ },
+ yo: {
+  program:"Ètò Ààbò Ìlera Ẹbí Nàìjíríà",tagline:"ẸBÍ RẸ. ÌLERA WỌN. OJÚṢÙN RẸ.",translate:"Èdè",nav1:"Àwọn Iṣẹ́ Ìdánilójú Ìlera Ẹbí Nàìjíríà",nav2:"Ìtọ́jú Ìlera Àwọn Àgbàlagbà Nílé",nav3:"Ìtọ́jú Ìlera Lórí Íńtánẹ́ẹ̀tì",nav4:"Àwọn Ohun Èlò Ìṣègùn",nav5:"Ìkẹ́kọ̀ọ́ àti Iṣẹ́ Ìlera",nav6:"Àwọn Alábáṣiṣẹpọ̀",
+  eyebrow:"Ààbò fún àwọn ẹbí káàkiri Nàìjíríà",heroTitle:"Àwọn Iṣẹ́ Ìdánilójú Ìlera Ẹbí Nàìjíríà",heroText:"Ètò Ìdánilójú Ìlera Àwùjọ fún Ẹgbẹ́, Ẹnìkọ̀ọ̀kan àti Ẹbí – GIFSHIP.",explore:"Wo Àwọn Iṣẹ́ Wa",learn:"Kọ́ Síi",heroVideoLabel:"ÌFÍHÀN ÈTÒ",videoPlaceholder:"Fi fídíò ìlera sí assets/hero-video.mp4",videoPlaceholder2:"Fi fídíò ìdánilójú ìlera sí assets/insurance-video.mp4",
+  trust:"A ń ṣe àtìlẹ́yìn fún ìlera ẹbí àti àǹfààní ìtọ́jú káàkiri Nàìjíríà",sectionTitleBlue:"Ẹbí Nàìjíríà",sectionTitleRest:"Àwọn Iṣẹ́ Ìdánilójú Ìlera",authorization:"Àṣẹ Ìdánilójú Ìlera Orílẹ̀-èdè",
+  paragraph1:"Ó yẹ kí àwọn ẹbí Nàìjíríà lè rí ìtọ́jú ìlera tó dára tí iye rẹ̀ sì rọrùn. Ètò Ààbò Ìlera Ẹbí Nàìjíríà ń pèsè àǹfààní láti ṣe àtìlẹ́yìn fún àwọn òbí, ọmọ, arákùnrin, arábìnrin àti àwọn mọ̀lẹ́bí nípasẹ̀ ìdánilójú ìlera.",paragraph2:"Sísan owó ìdánilójú ìlera fún àwọn olólùfẹ́ ju fífi owó fún ìtọ́jú àìsàn lọ. Ó jẹ́ ìdókòwò nínú ààbò ẹbí, ọlá, ààbò owó àti ìgbésí ayé gígùn.",paragraph3:"Ète wa ni láti gbé àǹfààní ìdánilójú ìlera tó rọrùn ga àti láti ran àwọn ẹbí káàkiri Nàìjíríà lọ́wọ́.",reasons:"Ìdí Tí Ó Fi Yẹ Kí Àwọn Nàìjíríà Sanwó fún Ìdánilójú Ìlera Ẹbí",
+  servicesTitle:"Àwọn Iṣẹ́ Ìlera Wa",servicesIntro:"Wo àwọn ẹ̀ka iṣẹ́ ètò náà àti bí wọ́n ṣe ń ṣe àtìlẹ́yìn fún àwọn ẹbí àti àwùjọ tó ní ìlera.",card1Title:"Ìdánilójú Ìlera Ẹbí",card1Text:"Àlàyé nípa àwọn àṣàyàn ìdánilójú ìlera fún ẹnìkọ̀ọ̀kan, ẹgbẹ́ àti ẹbí.",card2Title:"Ìtọ́jú Ìlera Àwọn Àgbàlagbà Nílé",card2Text:"Àtìlẹ́yìn ìlera àti ìrànlọ́wọ́ fún àwọn àgbàlagbà àti ẹbí wọn.",card3Title:"Ìtọ́jú Ìlera Lórí Íńtánẹ́ẹ̀tì",card3Text:"Kọ́ nípa ìmọ̀ràn dókítà láti ọ̀nà jíjìn àti lílo ẹ̀rọ ayélujára láti rí dókítà.",card4Title:"Àwọn Ohun Èlò Ìṣègùn",card4Text:"Àlàyé nípa àwọn ẹ̀rọ ìṣègùn pàtàkì àti àwọn ohun èlò ìlera.",card5Title:"Ìkẹ́kọ̀ọ́, Ẹ̀kọ́ àti Iṣẹ́ Ìlera",card5Text:"Ìkẹ́kọ̀ọ́ àti àǹfààní ìdàgbàsókè iṣẹ́ ní ẹ̀ka ìlera.",card6Title:"Àwọn Alábáṣiṣẹpọ̀",card6Text:"Bá ètò náà sọ̀rọ̀ nípa ìfọwọ́sowọ́pọ̀ àti àǹfààní ajọṣepọ̀.",readMore:"Kọ́ síi →",contactUs:"Kàn sí wa →",ctaTitle:"Ààbò ni ìbẹ̀rẹ̀ ìlera ẹbí tó dára.",ctaText:"Kàn sí ètò náà láti mọ̀ sí i nípa àwọn iṣẹ́ tó wà.",callUs:"Pe 313 551 0998",quickLinks:"Àwọn Ọ̀nà Kíákíá",contactHeading:"Ìbánisọ̀rọ̀",aboutProgram:"Nípa ètò náà",backTop:"Padà sí òkè ↑",copyright:"© 2026 Ètò Ààbò Ìlera Ẹbí Nàìjíríà. Gbogbo ẹ̀tọ́ wà ní ìpamọ́."
+ },
+ efi: {
+  program:"Nigerian Family Health Protection Program",tagline:"EBIBI FO. MBUBU FO. UTIBE FO.",translate:"Sụn̄ Ikọ",nav1:"Nigerian Family Health Insurance Services",nav2:"Senior Citizens Home Healthcare",nav3:"Telemedicine",nav4:"Durable Medical Supplies",nav5:"Medical Training, Education & Careers",nav6:"Partners",
+  eyebrow:"Idọñọ ebibi ke Nigeria",heroTitle:"Nigerian Family Health Insurance Services",heroText:"Group, Individual & Family Social Health Insurance Program – GIFSHIP.",explore:"Kụt Idoñọ Mbụñ",learn:"Kụt N̄kpọ Efen",heroVideoLabel:"IKỌÑỌ PROGRAM",videoPlaceholder:"Dọñ video health ke assets/hero-video.mp4",videoPlaceholder2:"Dọñ video insurance ke assets/insurance-video.mp4",
+  trust:"Idọñọ health ebibi ye access ke care ke Nigeria",sectionTitleBlue:"Nigerian Family",sectionTitleRest:"Health Insurance Services",authorization:"National Health Insurance Authorization",
+  paragraph1:"Ebibi ke Nigeria ẹkop access ke health care emi ẹdọn̄ọde ye emi ẹnyụñ ẹnyene owo. Nigerian Family Health Protection Program anam ẹkeme ndọñọ eka ye ete, eyen, nditọ eka ye nditọ ete, ye mme owo ke ufọk ke health insurance.",paragraph2:"N̄kpọ ndọñọ health insurance ke mme owo emi afo amaha edi n̄kpọ efen karịa ndọñọ owo ke hospital bills. Ọ bụ investment ke idọñọ ebibi, dignity, financial security ye uwem emi adịde ogologo.",paragraph3:"Afoñọ nnyịn edi ndọñọ access ke health insurance emi owo ekeme ndọñọ ye idọñọ ebibi ke Nigeria.",reasons:"Reasons Nigerians Should Pay for Family Health Insurance",
+  servicesTitle:"Mme Health Services Nnyịn",servicesIntro:"Kụt mme service areas ke program ye nte mmọ ẹdọñọ ebibi ye obodo.",card1Title:"Family Health Insurance",card1Text:"N̄kpọ emi ẹkpepde ke individual, group ye family social health insurance.",card2Title:"Senior Citizens Home Healthcare",card2Text:"Health support ye iranlọwọ ke mme owo emi ẹdọhọde ye ebibi mmọ.",card3Title:"Telemedicine",card3Text:"Kpep nte owo ekeme ndọñọ doctor ke online ye remote consultation.",card4Title:"Durable Medical Supplies",card4Text:"N̄kpọ ke medical equipment ye mme health supplies.",card5Title:"Medical Training, Education & Careers",card5Text:"Training, education ye career development ke health sector.",card6Title:"Partners",card6Text:"Sọñọ program ke partnership ye institutional collaboration.",readMore:"Kpep efen →",contactUs:"Kpọñ nnyịn →",ctaTitle:"Idọñọ ebibi amalite ke protection.",ctaText:"Kpọñ program kụt n̄kpọ ke mme service emi ẹdọñọde.",callUs:"Kpọñ 313 551 0998",quickLinks:"Quick Links",contactHeading:"Contact",aboutProgram:"About program",backTop:"Kpa ke enyọn̄ ↑",copyright:"© 2026 Nigerian Family Health Protection Program. All Rights Reserved."
+ }
+};
+function setLanguage(lang){
+ const dict=translations[lang]||translations.en;
+ document.documentElement.lang=lang==="yo"?"yo":lang==="efi"?"efi":"en";
+ document.querySelectorAll("[data-i18n]").forEach(el=>{
+   const key=el.dataset.i18n;
+   if(dict[key]) el.textContent=dict[key];
+ });
+ localStorage.setItem("nfhpp-language",lang);
+}
+const languageSelect=document.getElementById("language");
+languageSelect.value=localStorage.getItem("nfhpp-language")||"en";
+setLanguage(languageSelect.value);
+languageSelect.addEventListener("change",e=>setLanguage(e.target.value));
+
+document.querySelectorAll(".nav a").forEach(link=>{
+ link.addEventListener("click",()=>{
+  document.querySelectorAll(".nav a").forEach(a=>a.classList.remove("active"));
+  link.classList.add("active");
+ });
+});
+const observer=new IntersectionObserver(entries=>{
+ entries.forEach(entry=>{
+  if(entry.isIntersecting){
+   const active=document.querySelector('.nav a[href="#'+entry.target.id+'"]');
+   if(active){document.querySelectorAll(".nav a").forEach(a=>a.classList.remove("active"));active.classList.add("active");}
+  }
+ });
+},{rootMargin:"-25% 0px -65% 0px"});
+["insurance","senior","telemedicine","supplies","training","partners"].forEach(id=>{const el=document.getElementById(id);if(el)observer.observe(el)});
+
+// If the replaceable MP4 files are not present, retain the poster and show a clear video placeholder.
+document.querySelectorAll("video").forEach(video=>{
+ video.addEventListener("error",()=>{video.style.display="none";});
+});
+</script>
+</body>
+</html>
